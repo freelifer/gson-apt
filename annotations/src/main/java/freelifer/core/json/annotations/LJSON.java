@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
  * @author zhukun on 2017/12/19.
  */
 @Retention(RetentionPolicy.CLASS)
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 public @interface LJSON {
 }
