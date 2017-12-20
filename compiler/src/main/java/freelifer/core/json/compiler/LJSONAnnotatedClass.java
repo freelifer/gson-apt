@@ -19,7 +19,7 @@ import javax.lang.model.type.TypeMirror;
  */
 public class LJSONAnnotatedClass {
 
-    public static void toWrite(List<LJSONTypeElement> list, ProcessorHelper helper, LJSONTypeElement ljsonElement, Filer filer) throws IOException {
+    public static void toWrite(ProcessorHelper helper, LJSONTypeElement ljsonElement, Filer filer) throws IOException {
 
         // create common ClassName
         ClassName thisObj = ClassName.bestGuess(ljsonElement.getTypeName());
@@ -35,7 +35,7 @@ public class LJSONAnnotatedClass {
                 .addStatement("$T root = new $T(json)", jsonObject, jsonObject);
 
         List<LIMITJSONVariable> ljsonVariableElements = ljsonElement.getVariableElements();
-        addLJSONVariable(list, helper, createMethod, ljsonVariableElements);
+        addLJSONVariable(helper, createMethod, ljsonVariableElements);
 
         createMethod.nextControlFlow("catch (Exception e)")
                 .beginControlFlow("if (allowNull)")
@@ -58,7 +58,7 @@ public class LJSONAnnotatedClass {
         JavaFile.builder(packageName, finderClass).build().writeTo(filer);
     }
 
-    private static void addLJSONVariable(List<LJSONTypeElement> list, ProcessorHelper helper, MethodSpec.Builder builder, List<LIMITJSONVariable> ljsonVariableElements) {
+    private static void addLJSONVariable(ProcessorHelper helper, MethodSpec.Builder builder, List<LIMITJSONVariable> ljsonVariableElements) {
         if (Collections.isEmpty(ljsonVariableElements)) {
             return;
         }
@@ -81,7 +81,7 @@ public class LJSONAnnotatedClass {
                     if ("java.lang.String".equals(typeMirror.toString())) {
                         result = "thisObj.$N = root.optString($S)";
                     } else {
-                        ljsonTypeElement = findLJSONTypeElement(list, typeMirror.toString());
+                        ljsonTypeElement = findLJSONTypeElement(helper, typeMirror.toString());
                         if (ljsonTypeElement != null) {
                             result = "thisObj.$N = $T.create(root.optString($S), allowNull)";
                             isObject = true;
@@ -101,7 +101,8 @@ public class LJSONAnnotatedClass {
         }
     }
 
-    private static LJSONTypeElement findLJSONTypeElement(List<LJSONTypeElement> list, String className) {
+    private static LJSONTypeElement findLJSONTypeElement(ProcessorHelper helper, String className) {
+        List<LJSONTypeElement> list = helper.getLimitJSONTypeElements();
         if (Collections.isEmpty(list) || className == null) {
             return null;
         }

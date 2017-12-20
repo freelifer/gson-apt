@@ -33,8 +33,6 @@ public class JSONProcessor extends AbstractProcessor {
     private Elements elements;
     private Messager messager;
 
-    private List<LJSONTypeElement> list = new ArrayList<>();
-
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
@@ -63,7 +61,7 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        list.clear();
+        processorHelper.clear();
 
         processorHelper.i("Printing process............................");
         for (TypeElement te : annotations) {
@@ -75,11 +73,9 @@ public class JSONProcessor extends AbstractProcessor {
 
         try {
             processLimitJSON(roundEnv);
-            if (list != null && list.size() != 0) {
-                for (LJSONTypeElement ljsonElement : list) {
-                    LJSONAnnotatedClass.toWrite(list, processorHelper, ljsonElement, filer);
-                }
-            }
+
+
+            processorHelper.process();
 
         } catch (IllegalArgumentException e) {
             processorHelper.e(e.getMessage());
@@ -94,7 +90,7 @@ public class JSONProcessor extends AbstractProcessor {
     private void processLimitJSON(RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(LJSON.class)) {
             LJSONTypeElement ljsonElement = LJSONTypeElement.create(elements, element);
-            list.add(ljsonElement);
+            processorHelper.setLimitJSONTypeElements(ljsonElement);
             processorHelper.i("---------------------" + ljsonElement.toString());
 //
             TypeElement typeElement = (TypeElement) element;

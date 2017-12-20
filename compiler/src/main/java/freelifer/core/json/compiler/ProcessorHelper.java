@@ -4,6 +4,7 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.Messager;
@@ -24,6 +25,9 @@ public class ProcessorHelper {
 
     private final Messager messager;
 
+    /** LimitJSON 注解的类对象列表 */
+    private List<LJSONTypeElement> limitJSONTypeElements = Collections.newArrayList();
+
     private ProcessorHelper(final Filer filer, final Elements elements, final Messager messager) {
         this.filer = filer;
         this.elements = elements;
@@ -32,6 +36,26 @@ public class ProcessorHelper {
 
     public static ProcessorHelper create(final Filer filer, final Elements elements, final Messager messager) {
         return new ProcessorHelper(filer, elements, messager);
+    }
+
+    public void process() throws IOException {
+        if (!Collections.isEmpty(limitJSONTypeElements)) {
+            for (LJSONTypeElement ljsonElement : limitJSONTypeElements) {
+                LJSONAnnotatedClass.toWrite(this, ljsonElement, filer);
+            }
+        }
+    }
+
+    public List<LJSONTypeElement> getLimitJSONTypeElements() {
+        return limitJSONTypeElements;
+    }
+
+    public void setLimitJSONTypeElements(LJSONTypeElement element) {
+        limitJSONTypeElements.add(element);
+    }
+
+    public void clear() {
+        limitJSONTypeElements.clear();
     }
 
     public String getPackageOf(Element element) {
