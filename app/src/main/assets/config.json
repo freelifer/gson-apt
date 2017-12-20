@@ -1,0 +1,43 @@
+{
+  "version": "201611291200",
+  "segment_id": "0",
+  "analytics_level": 1,
+  "fullChaningShowIntervalS": 900,
+  "preLoadAdIntervalS": 600,
+  "loadAndShowAdIntervalS": 600,
+  "realShowAdIntervalS": 1800,
+  "charge": {
+    "enable": true,
+    "adNeed": true,
+    "enforceCount": 1,
+    "enforce": {
+      "userAutoEnforceEnable": 1,
+      "autoEnforce": 1,
+      "firstEnforceOnTime": 172800000,
+      "enforceOnTime": 432000000
+    },
+    "show": {
+      "max": 100,
+      "intervalS": 1
+    },
+    "configDownload": {
+      "max": 10,
+      "intervalS": 7200
+    }
+  },
+  "promote": {},
+  "ui": {
+    "titleVisiable": true,
+    "iconVisiable": true,
+    "title": "Battery Info",
+    "dragAsClick": false,
+    "swipeAble": false,
+    "flingHorizontalAble": true,
+    "flingVerticalAble": true,
+    "gifUrl": "http://cdn.doghot.info/browser/2016/floatball.gif"
+  },
+  "blacklist": [
+  ],
+  "priorityList": [
+  ]
+}

@@ -9,6 +9,8 @@ import freelifer.core.json.annotations.LJSON;
 public class Entity {
     public int a;
     public String b;
-    private boolean c;
+    public boolean c;
 //    private double d;
+
+    public SonEntity son;
 }

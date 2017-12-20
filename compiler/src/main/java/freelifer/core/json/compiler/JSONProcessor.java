@@ -2,6 +2,8 @@ package freelifer.core.json.compiler;
 
 import com.google.auto.service.AutoService;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +33,8 @@ public class JSONProcessor extends AbstractProcessor {
     private Elements elements;
     private Messager messager;
 
+    private List<LJSONTypeElement> list = new ArrayList<>();
+
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
@@ -59,6 +63,8 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        list.clear();
+
         processorHelper.i("Printing process............................");
         for (TypeElement te : annotations) {
             processorHelper.i("Printing type: " + te.toString());
@@ -69,7 +75,16 @@ public class JSONProcessor extends AbstractProcessor {
 
         try {
             processLimitJSON(roundEnv);
+            if (list != null && list.size() != 0) {
+                for (LJSONTypeElement ljsonElement : list) {
+                    LJSONAnnotatedClass.toWrite(list, processorHelper, ljsonElement, filer);
+                }
+            }
+
         } catch (IllegalArgumentException e) {
+            processorHelper.e(e.getMessage());
+            return true; // stop process
+        } catch (IOException e) {
             processorHelper.e(e.getMessage());
             return true; // stop process
         }
@@ -78,13 +93,17 @@ public class JSONProcessor extends AbstractProcessor {
 
     private void processLimitJSON(RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(LJSON.class)) {
+            LJSONTypeElement ljsonElement = LJSONTypeElement.create(elements, element);
+            list.add(ljsonElement);
+            processorHelper.i("---------------------" + ljsonElement.toString());
+//
             TypeElement typeElement = (TypeElement) element;
             Element a = typeElement.getEnclosingElement();
-            processorHelper.i("LJSON ++" + a);
+            processorHelper.i("LJSON ++" + a + " " + element.getKind().name());
             List<? extends Element> param = typeElement.getEnclosedElements();
             for (Element p : param) {
                 if (p instanceof VariableElement) {
-                    processorHelper.i("LJSON .." + p.getSimpleName());
+                    processorHelper.i("LJSON ........" + p.getSimpleName() + " " + p.asType().toString());
                 }
             }
 

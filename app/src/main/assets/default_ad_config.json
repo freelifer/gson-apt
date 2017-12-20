@@ -1,0 +1,567 @@
+{
+  "version": "201611041540",
+  "version_desc": "description",
+  "open_status": true,
+  "refresh_frequence": 3600000,
+  "refresh_time_limite": 300000,
+  "segment_id": 100,
+  "refresh_cache_by_batterystatus": 70,
+  "night_mod_time": 19,
+  "day_mod_time": 7,
+  "refresh_url": "http://www.baidu.com",
+  "gift_url": "http://download.wifimaster.mobi/swiftwifi/2016/white_floatball.gif",
+  "battery_gift_url": "http://cdn.doghot.info/browser/2016/floatball.gif",
+  "reprot_config": {
+    "report_status": true,
+    "report_time": 300000
+  },
+  "SDK_Config": {
+    "facebook_status": true,
+    "admob_status": true,
+    "mopub_status": true,
+    "facebook_lifetime": 9000000,
+    "admob_lifetime": 2700000,
+    "mopub_lifetime": 21600000
+  },
+  "ADSlot_Config": [
+    {
+      "slot_id": "00503",
+      "slot_name": "keyboard_gift",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "guide",
+            "open_status": true,
+            "type": "banner",
+            "admob_type": 3,
+            "native_style": 0,
+            "key": "13456789"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62001",
+      "slot_name": "spb_gift_box",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 8,
+            "key": "182964452160523_182968435493458"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 8,
+            "key": "ca-app-pub-6857009064962881/7722775456"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62002",
+      "slot_name": "spb_middle",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 1,
+            "key": "182964452160523_182968535493448"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 1,
+            "key": "ca-app-pub-6857009064962881/9199508650"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62003",
+      "slot_name": "spb_main_bottom",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 17,
+            "key": "182964452160523_182968665493435"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 17,
+            "key": "ca-app-pub-6857009064962881/1676241858"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62004",
+      "slot_name": "spb_check_banner",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 1,
+            "key": "182964452160523_182968748826760"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 1,
+            "key": "ca-app-pub-6857009064962881/3152975058"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62005",
+      "slot_name": "spb_result",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 17,
+            "key": "182964452160523_182968888826746"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 17,
+            "key": "ca-app-pub-6857009064962881/4629708252"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62006",
+      "slot_name": "spb_power_detail",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 17,
+            "key": "182964452160523_182969062160062"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 17,
+            "key": "ca-app-pub-6857009064962881/7583174655"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62007",
+      "slot_name": "spb_power_analysis",
+      "open_status": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 1,
+            "key": "182964452160523_182969125493389"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 1,
+            "key": "ca-app-pub-6857009064962881/9059907857"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "62008",
+      "slot_name": "spb_smart_save",
+      "open_status": false,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 1,
+            "key": "182964452160523_182969242160044"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 1,
+            "key": "ca-app-pub-6857009064962881/3013374258"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00105",
+      "slot_name": "spb_batterygift",
+      "open_status": false,
+      "is_outside_ad": true,
+      "is_auload": false,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 5,
+            "key": "182964452160523_182972692159699"
+          },
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 5,
+            "key": "ca-app-pub-6857009064962881/8920307053"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00201",
+      "slot_name": "spb_clean",
+      "open_status": true,
+      "is_auload": true,
+      "is_outside_ad": true,
+      "show_priority": 1,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 13,
+            "key": "ca-app-pub-6857009064962881/2873773455"
+          },
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 13,
+            "key": "182964452160523_182972782159690"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00401",
+      "slot_name": "spb_standby_1",
+      "open_status": true,
+      "is_auload": true,
+      "is_outside_ad": true,
+      "show_priority": 1,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 11,
+            "key": "ca-app-pub-6857009064962881/4350506651"
+          },
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 11,
+            "key": "182964452160523_182972952159673"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00402",
+      "slot_name": "spb_standby_2",
+      "open_status": false,
+      "is_auload": true,
+      "is_outside_ad": true,
+      "show_priority": 1,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 12,
+            "key": "ca-app-pub-6857009064962881/8466955455"
+          },
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 12,
+            "key": "182964452160523_182973018826333"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00301",
+      "slot_name": "spb_cover",
+      "open_status": true,
+      "is_auload": true,
+      "is_outside_ad": true,
+      "show_priority": 1,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "admob",
+            "open_status": true,
+            "type": "banner",
+            "weight": 50,
+            "admob_type": 3,
+            "native_style": 14,
+            "key": "ca-app-pub-6857009064962881/7303973058"
+          },
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 14,
+            "key": "182964452160523_182973115492990"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00101",
+      "slot_name": "spb_batterylockscreen_1",
+      "open_status": true,
+      "is_auload": false,
+      "is_outside_ad": true,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 21,
+            "key": "182964452160523_182973302159638"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00701",
+      "slot_name": "spb_batterylockscreen_2",
+      "open_status": true,
+      "is_auload": false,
+      "is_outside_ad": true,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 21,
+            "key": "182964452160523_182973528826282"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00602",
+      "slot_name": "spb_batterylockscreen_3",
+      "open_status": true,
+      "is_auload": false,
+      "is_outside_ad": true,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 21,
+            "key": "182964452160523_182973558826279"
+          },
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 21,
+            "key": "1713507248906238_1787050824885213"
+          }
+        ]
+      ]
+    },
+    {
+      "slot_id": "00601",
+      "slot_name": "spb_batterylockscreen_4",
+      "open_status": true,
+      "is_auload": false,
+      "is_outside_ad": true,
+      "show_priority": 2,
+      "cache_size": 1,
+      "load_num": 1,
+      "flow": [
+        [
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 21,
+            "key": "182964452160523_182973618826273"
+          },
+          {
+            "platform": "facebook",
+            "open_status": true,
+            "ad_clcik_enable": 1,
+            "type": "native",
+            "weight": 50,
+            "native_style": 21,
+            "key": "1713507248906238_1787447111512251"
+          }
+        ]
+      ]
+    }
+  ]
+}
