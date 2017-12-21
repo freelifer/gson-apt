@@ -11,4 +11,5 @@ public class SonEntity extends Entity {
     @LJSONVariable("see")
     public int a;
     public int s;
+    public int[] arraya;
 }

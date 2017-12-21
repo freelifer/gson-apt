@@ -64,40 +64,43 @@ public class LJSONAnnotatedClass {
         }
 
         for (LIMITJSONVariable variable : ljsonVariableElements) {
-            boolean isObject = false;
             LJSONTypeElement ljsonTypeElement = null;
             helper.i(variable.toString());
-            String result = "thisObj.$N = root.opt($S)";
             TypeMirror typeMirror = variable.typeMirror();
             final TypeKind typeKind = typeMirror.getKind();
+            final String typeMirrorStr = typeMirror.toString();
+            helper.i(">>>>>>>>>>>>>" + typeKind.name());
+            LimitJSONType limitJSONType = null;
             switch (typeKind) {
                 case INT:
-                    result = "thisObj.$N = root.optInt($S)";
+                    limitJSONType = new LimitJSONType("thisObj.$N = root.optInt($S)");
                     break;
                 case BOOLEAN:
-                    result = "thisObj.$N = root.optBoolean($S)";
+                    limitJSONType = new LimitJSONType("thisObj.$N = root.optBoolean($S)");
+                    break;
+                case ARRAY:
+                    if ("int[]".equals(typeMirrorStr)) {
+                        helper.i("<<<<<<<<<<<<<<<<<" + typeMirror.getClass());
+                    } else if ("String[]".equals(typeMirrorStr)) {
+
+                    }
                     break;
                 case DECLARED:
                     if ("java.lang.String".equals(typeMirror.toString())) {
-                        result = "thisObj.$N = root.optString($S)";
+                        limitJSONType = new LimitJSONType("thisObj.$N = root.optString($S)");
                     } else {
                         ljsonTypeElement = findLJSONTypeElement(helper, typeMirror.toString());
                         if (ljsonTypeElement != null) {
-                            result = "thisObj.$N = $T.create(root.optString($S), allowNull)";
-                            isObject = true;
+                            limitJSONType = new LimitJSONTypeObject("thisObj.$N = $T.create(root.optString($S), allowNull)", ljsonTypeElement.getQualifiedName() + "$$CREATOR");
                         }
                     }
                     break;
                 default:
                     break;
             }
-            builder.beginControlFlow("if (root.has($S))", variable.jsonName());
-            if (isObject) {
-                builder.addStatement(result, variable.variableName(), ClassName.bestGuess(ljsonTypeElement.getQualifiedName() + "$$CREATOR"), variable.jsonName());
-            } else {
-                builder.addStatement(result, variable.variableName(), variable.jsonName());
+            if (limitJSONType != null) {
+                limitJSONType.addStatement(builder, variable);
             }
-            builder.endControlFlow();
         }
     }
 

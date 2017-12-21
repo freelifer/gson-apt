@@ -6,8 +6,17 @@ import com.squareup.javapoet.MethodSpec;
  * @author zhukun on 2017/12/21.
  */
 
-public interface LimitJSONType {
+public class LimitJSONType {
 
-    void addStatement(MethodSpec.Builder builder, LIMITJSONVariable limitjsonVariable);
+    protected String format;
 
+    public LimitJSONType(String format) {
+        this.format = format;
+    }
+
+    public void addStatement(MethodSpec.Builder builder, LIMITJSONVariable variable) {
+        builder.beginControlFlow("if (root.has($S))", variable.jsonName());
+        builder.addStatement(format, variable.variableName(), variable.jsonName());
+        builder.endControlFlow();
+    }
 }
