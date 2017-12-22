@@ -10,5 +10,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
-public @interface LJSON {
+public @interface LIMITJSON {
+    boolean debug() default false;
 }

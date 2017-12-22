@@ -1,11 +1,11 @@
 package freelifer.core.json;
 
-import freelifer.core.json.annotations.LJSON;
+import freelifer.core.json.annotations.LIMITJSON;
 
 /**
  * @author kzhu on 2017/12/20.
  */
-@LJSON()
+@LIMITJSON()
 public class Role {
     public String name;
     public String desc;

@@ -1,15 +1,19 @@
 package freelifer.core.json;
 
-import freelifer.core.json.annotations.LJSON;
-import freelifer.core.json.annotations.LJSONVariable;
+import freelifer.core.json.annotations.LIMITJSON;
+import freelifer.core.json.annotations.LIMITJSONVariable;
 
 /**
  * @author kzhu on 2017/12/19.
  */
-@LJSON()
+@LIMITJSON()
 public class SonEntity extends Entity {
-    @LJSONVariable("see")
+    @LIMITJSONVariable("see")
     public int a;
-    public int s;
+    public int eer;
     public int[] arraya;
+    public String[] bb;
+    public boolean[] cc;
+    public long[] ff;
+    public double[] ee;
 }

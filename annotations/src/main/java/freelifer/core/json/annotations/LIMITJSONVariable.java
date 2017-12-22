@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
-public @interface LJSONVariable {
+public @interface LIMITJSONVariable {
     String value();
 }

@@ -3,7 +3,6 @@ package freelifer.core.json.compiler;
 import com.google.auto.service.AutoService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +19,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 
-import freelifer.core.json.annotations.LJSON;
+import freelifer.core.json.annotations.LIMITJSON;
 
 /**
  * @author zhukun on 2017/12/19.
@@ -48,7 +47,7 @@ public class JSONProcessor extends AbstractProcessor {
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotationTypes = new LinkedHashSet<String>();
         // add annotations type
-        annotationTypes.add(LJSON.class.getCanonicalName());
+        annotationTypes.add(LIMITJSON.class.getCanonicalName());
 
         return annotationTypes;
     }
@@ -88,7 +87,7 @@ public class JSONProcessor extends AbstractProcessor {
     }
 
     private void processLimitJSON(RoundEnvironment roundEnv) {
-        for (Element element : roundEnv.getElementsAnnotatedWith(LJSON.class)) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(LIMITJSON.class)) {
             LJSONTypeElement ljsonElement = LJSONTypeElement.create(elements, element);
             processorHelper.setLimitJSONTypeElements(ljsonElement);
             processorHelper.i("---------------------" + ljsonElement.toString());

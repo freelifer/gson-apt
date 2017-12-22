@@ -4,16 +4,16 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 
-import freelifer.core.json.annotations.LJSONVariable;
+import freelifer.core.json.annotations.LIMITJSONVariable;
 
 /**
  * @author kzhu on 2017/12/19.
  */
-public class LJSONVariableElement implements LIMITJSONVariable {
+public class LJSONVariableElement implements freelifer.core.json.compiler.LIMITJSONVariable {
 
     private Elements elements;
     private VariableElement variableElement;
-    private LJSONVariable ljsonVariable;
+    private LIMITJSONVariable ljsonVariable;
 
     private LJSONVariableElement() {
     }
@@ -21,7 +21,7 @@ public class LJSONVariableElement implements LIMITJSONVariable {
     public static LJSONVariableElement create(VariableElement element) {
         LJSONVariableElement ljsonElement = new LJSONVariableElement();
         ljsonElement.variableElement = element;
-        ljsonElement.ljsonVariable = element.getAnnotation(LJSONVariable.class);
+        ljsonElement.ljsonVariable = element.getAnnotation(LIMITJSONVariable.class);
 
         return ljsonElement;
     }

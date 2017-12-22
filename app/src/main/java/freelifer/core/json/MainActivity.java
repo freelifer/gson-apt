@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,11 +21,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SonEntity$$CREATOR.create("",false);
         limitJsonTv = (TextView) findViewById(R.id.limitjson_ms);
-//        JSONObject root = new JSONObject(json);
-//        if (root.has("")) {
-//
-//        }
+        try {
+            JSONObject root = new JSONObject("");
+            root.opt("");
+            root.optInt("");
+            root.optBoolean("");
+            root.optLong("");
+            float aa  = (float) root.optDouble("");
+            root.optString("");
+
+            root.optJSONObject("");
+            root.optJSONArray("");
+            int[] a;
+            if (root.has("arr")) {
+                JSONArray array = root.optJSONArray("");
+                int size = array.length();
+                a = new int[size];
+                for (int i = 0; i < size; i++) {
+                    a[i] = array.optInt(i);
+                }
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         testLimitJson();
 
         LinearGraphView tu = (LinearGraphView) findViewById(R.id.line_graphic);

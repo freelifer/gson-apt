@@ -9,7 +9,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 
-import freelifer.core.json.annotations.LJSON;
+import freelifer.core.json.annotations.LIMITJSON;
 
 /**
  * @author kzhu on 2017/12/19.
@@ -26,7 +26,7 @@ public class LJSONTypeElement {
     public static LJSONTypeElement create(Elements elements, Element element) {
         if (element.getKind() != ElementKind.CLASS) {
             throw new IllegalArgumentException(
-                    String.format("Only CLASS can be annotated with @%s", LJSON.class.getSimpleName()));
+                    String.format("Only CLASS can be annotated with @%s", LIMITJSON.class.getSimpleName()));
         }
         TypeElement typeElement = (TypeElement) element;
         LJSONTypeElement ljsonElement = new LJSONTypeElement();

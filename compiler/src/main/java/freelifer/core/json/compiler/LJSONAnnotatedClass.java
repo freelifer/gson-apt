@@ -78,11 +78,27 @@ public class LJSONAnnotatedClass {
                 case BOOLEAN:
                     limitJSONType = new LimitJSONType("thisObj.$N = root.optBoolean($S)");
                     break;
+                case LONG:
+                    limitJSONType = new LimitJSONType("thisObj.$N = root.optLong($S)");
+                    break;
+                case DOUBLE:
+                    limitJSONType = new LimitJSONType("thisObj.$N = root.optDouble($S)");
+                    break;
+                case FLOAT:
+                    limitJSONType = new LimitJSONType("thisObj.$N = (float) root.optDouble($S)");
+                    break;
                 case ARRAY:
                     if ("int[]".equals(typeMirrorStr)) {
                         helper.i("<<<<<<<<<<<<<<<<<" + typeMirror.getClass());
-                    } else if ("String[]".equals(typeMirrorStr)) {
-
+                        limitJSONType = new LimitJSONTypeArray("optInt", "int");
+                    } else if ("java.lang.String[]".equals(typeMirrorStr)) {
+                        limitJSONType = new LimitJSONTypeArray("optString", "String");
+                    }  else if ("long[]".equals(typeMirrorStr)) {
+                        limitJSONType = new LimitJSONTypeArray("optLong", "long");
+                    } else if ("double[]".equals(typeMirrorStr)) {
+                        limitJSONType = new LimitJSONTypeArray("optDouble", "double");
+                    } else if ("boolean[]".equals(typeMirrorStr)) {
+                        limitJSONType = new LimitJSONTypeArray("optBoolean", "boolean");
                     }
                     break;
                 case DECLARED:
