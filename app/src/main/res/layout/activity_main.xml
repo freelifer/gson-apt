@@ -61,10 +61,10 @@
         android:layout_marginTop="80dp"
         android:background="#0f0f0f0f"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintVertical_bias="1.0">
 
         <freelifer.core.json.LinearGraphView
@@ -74,4 +74,15 @@
             android:layout_marginBottom="30dp"
             android:layout_weight="1"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="toValidate"
+        android:text="验证"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 </android.support.constraint.ConstraintLayout>

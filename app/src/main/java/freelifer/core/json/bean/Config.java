@@ -1,4 +1,4 @@
-package freelifer.core.json;
+package freelifer.core.json.bean;
 
 import freelifer.core.json.annotations.LIMITJSON;
 

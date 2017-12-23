@@ -1,8 +1,10 @@
 package freelifer.core.json;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -11,6 +13,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import freelifer.core.json.activity.VerificationActivity;
+import freelifer.core.json.bean.Config;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SonEntity$$CREATOR.create("",false);
+        Entity$$CREATOR.create("", false);
         limitJsonTv = (TextView) findViewById(R.id.limitjson_ms);
         try {
             JSONObject root = new JSONObject("");
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             root.optInt("");
             root.optBoolean("");
             root.optLong("");
-            float aa  = (float) root.optDouble("");
+            float aa = (float) root.optDouble("");
             root.optString("");
 
             root.optJSONObject("");
@@ -79,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             String json = Files.readInputStream(getAssets().open("config.json"), "utf-8");
             for (int i = 0; i < 100; i++) {
-                Config config = Config$$CREATOR.create(json, false);
             }
 
             Log.i("kzhu", "time: " + (System.currentTimeMillis() - start));
@@ -88,5 +92,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void toValidate(View view) {
+        startActivity(new Intent(this, VerificationActivity.class));
     }
 }

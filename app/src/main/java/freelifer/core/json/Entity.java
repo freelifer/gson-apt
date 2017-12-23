@@ -1,5 +1,7 @@
 package freelifer.core.json;
 
+import java.util.ArrayList;
+
 import freelifer.core.json.annotations.LIMITJSON;
 
 /**
@@ -12,5 +14,6 @@ public class Entity {
     public boolean c;
 //    private double d;
 
-    public SonEntity son;
+    public SonEntity[] son11;
+    public ArrayList<SonEntity> sonaa2111121111;
 }

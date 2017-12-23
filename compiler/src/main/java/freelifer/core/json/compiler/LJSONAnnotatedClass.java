@@ -8,6 +8,8 @@ import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.Modifier;
@@ -89,21 +91,44 @@ public class LJSONAnnotatedClass {
                     break;
                 case ARRAY:
                     if ("int[]".equals(typeMirrorStr)) {
-                        helper.i("<<<<<<<<<<<<<<<<<" + typeMirror.getClass());
                         limitJSONType = new LimitJSONTypeArray("optInt", "int");
                     } else if ("java.lang.String[]".equals(typeMirrorStr)) {
                         limitJSONType = new LimitJSONTypeArray("optString", "String");
-                    }  else if ("long[]".equals(typeMirrorStr)) {
+                    } else if ("long[]".equals(typeMirrorStr)) {
                         limitJSONType = new LimitJSONTypeArray("optLong", "long");
                     } else if ("double[]".equals(typeMirrorStr)) {
                         limitJSONType = new LimitJSONTypeArray("optDouble", "double");
                     } else if ("boolean[]".equals(typeMirrorStr)) {
                         limitJSONType = new LimitJSONTypeArray("optBoolean", "boolean");
+                    } else {
+                        // Object[]
+                        String className = typeMirrorStr.substring(0, typeMirrorStr.length() - 2);
+                        ljsonTypeElement = findLJSONTypeElement(helper, className);
+                        if (ljsonTypeElement != null) {
+                            limitJSONType = new LimitJSONTypeArrayObject("optString", className, ljsonTypeElement.getQualifiedName() + "$$CREATOR");
+                        }
                     }
                     break;
                 case DECLARED:
                     if ("java.lang.String".equals(typeMirror.toString())) {
                         limitJSONType = new LimitJSONType("thisObj.$N = root.optString($S)");
+                    } else if (typeMirrorStr.startsWith("java.util.List") || typeMirrorStr.startsWith("java.util.ArrayList")) {
+                        String regEx = "\\<(\\S*)\\>";
+                        Pattern pattern = Pattern.compile(regEx);
+                        Matcher mat = pattern.matcher(typeMirrorStr);
+                        if (mat.find()) {
+                            helper.i("<<<<<<<<<<<<<<List DECLARED " + mat.group(1));
+                            try {
+                                String className = mat.group(1);
+                                ljsonTypeElement = findLJSONTypeElement(helper, className);
+                                if (ljsonTypeElement != null) {
+                                    limitJSONType = new LimitJSONTypeList("optString", "", ljsonTypeElement.getQualifiedName() + "$$CREATOR");
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                     } else {
                         ljsonTypeElement = findLJSONTypeElement(helper, typeMirror.toString());
                         if (ljsonTypeElement != null) {
