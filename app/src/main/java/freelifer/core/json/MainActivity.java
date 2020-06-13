@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import freelifer.core.json.activity.VerificationActivity;
-import freelifer.core.json.bean.Config;
 
 
 public class MainActivity extends AppCompatActivity {
