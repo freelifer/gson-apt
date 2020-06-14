@@ -20,18 +20,11 @@ do that...
 |5|数组(array)|Object[]、List\<Object\>|
 |6|null|各个类型的默认值|
 
+## :gear: 更新日志
+[CHANGELOG.md](./CHANGELOG.md)
 
-## TODO-LIST
-
-- [ ] 多种方案比较 JSONObject、Gson、Gson TypeAdatper比较
-- [x] 基础解析功能 ----------------------- (2017/12/22)
-- [ ] 支持java float类型
-- [ ] 支持java数组类型，int[]、long[]、float[]、double[]、String[]
-- [ ] 支持List类型，List\<String\>、List\<Object\>
-- [ ] 支持Date日期时间格式2017/12/22 11:22:59
-- [ ] 支持debug、release模式(release版本不会触发解析崩溃)
-- [ ] 支持日志打印json格式
-- [ ] 支持日志打印json格式
+## :airplane: 计划列表
+[TODO.md](./TODO.md)
 
 ## 测试
 
