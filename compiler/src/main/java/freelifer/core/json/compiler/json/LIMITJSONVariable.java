@@ -1,4 +1,4 @@
-package freelifer.core.json.compiler;
+package freelifer.core.json.compiler.json;
 
 import javax.lang.model.type.TypeMirror;
 

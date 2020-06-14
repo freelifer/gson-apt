@@ -16,6 +16,14 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
+import freelifer.core.json.compiler.json.LIMITJSONVariable;
+import freelifer.core.json.compiler.json.LJSONTypeElement;
+import freelifer.core.json.compiler.json.type.LimitJSONType;
+import freelifer.core.json.compiler.json.type.LimitJSONTypeArray;
+import freelifer.core.json.compiler.json.type.LimitJSONTypeArrayObject;
+import freelifer.core.json.compiler.json.type.LimitJSONTypeList;
+import freelifer.core.json.compiler.json.type.LimitJSONTypeObject;
+
 /**
  * @author kzhu on 2017/12/19.
  */

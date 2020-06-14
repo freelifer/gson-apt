@@ -2,8 +2,6 @@ package freelifer.core.json.activity;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.JsonReader;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -13,14 +11,11 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import freelifer.core.json.R;
-import freelifer.core.json.bean.AdConfig;
 import freelifer.core.json.bean.AdConfig$$CREATOR;
 import freelifer.core.json.bean.AdConfigBean;
 import freelifer.core.json.bean.Goods;
@@ -119,7 +114,7 @@ public class VerificationActivity extends BaseActivity {
 
     static class AdConfigBeanAdapter extends TypeAdapter<AdConfigBean> {
         @Override
-        public AdConfigBean read(com.google.gson.stream.JsonReader reader) throws IOException {
+        public AdConfigBean read(final com.google.gson.stream.JsonReader reader) throws IOException {
             AdConfigBean adConfigBean = new AdConfigBean();
             reader.beginObject();
             String fieldname = null;
@@ -276,7 +271,16 @@ public class VerificationActivity extends BaseActivity {
             return dspEngines;
         }
 
-        ArrayList<AdConfigBean.ExtraInfo> readExtraInfo(com.google.gson.stream.JsonReader reader) throws IOException {
+        public ArrayList readArrayList(com.google.gson.stream.JsonReader in) throws IOException {
+            ArrayList list = new ArrayList<>();
+            in.beginArray();
+            while (in.hasNext()) {
+                list.add(readExtraInfo(in));
+            }
+            in.endArray();
+            return null;
+        }
+        static ArrayList<AdConfigBean.ExtraInfo> readExtraInfo(com.google.gson.stream.JsonReader reader) throws IOException {
             ArrayList<AdConfigBean.ExtraInfo> extraInfos = new ArrayList<>();
             String fieldname = null;
             reader.beginArray();

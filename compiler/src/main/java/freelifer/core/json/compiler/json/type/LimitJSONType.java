@@ -1,6 +1,8 @@
-package freelifer.core.json.compiler;
+package freelifer.core.json.compiler.json.type;
 
 import com.squareup.javapoet.MethodSpec;
+
+import freelifer.core.json.compiler.json.LIMITJSONVariable;
 
 /**
  * @author zhukun on 2017/12/21.

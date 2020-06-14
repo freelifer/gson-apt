@@ -1,6 +1,7 @@
-# limitjson
+# gson-apt
 
-> limitjson使用android编译时生成代码(APT)自动生成JSON解析代码，所有对象非空
+> gson-apt使用android编译时生成代码(APT)自动生成Gson TypeAdatper代码，提供高性能解析json
+> 两种模式，第一种极速模式，所有类都递归生成，但是生成代码比较多
 
 ## HOW TO DO?
 
@@ -22,6 +23,7 @@ do that...
 
 ## TODO-LIST
 
+- [ ] 多种方案比较 JSONObject、Gson、Gson TypeAdatper比较
 - [x] 基础解析功能 ----------------------- (2017/12/22)
 - [ ] 支持java float类型
 - [ ] 支持java数组类型，int[]、long[]、float[]、double[]、String[]
@@ -29,6 +31,11 @@ do that...
 - [ ] 支持Date日期时间格式2017/12/22 11:22:59
 - [ ] 支持debug、release模式(release版本不会触发解析崩溃)
 - [ ] 支持日志打印json格式
+- [ ] 支持日志打印json格式
 
 ## 测试
+
+#### JSONObject性能数据
+#### Gson性能数据
+#### Gson TypeAdatper性能数据
 

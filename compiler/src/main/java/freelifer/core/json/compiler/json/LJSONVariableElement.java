@@ -1,4 +1,4 @@
-package freelifer.core.json.compiler;
+package freelifer.core.json.compiler.json;
 
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
@@ -9,7 +9,7 @@ import freelifer.core.json.annotations.LIMITJSONVariable;
 /**
  * @author kzhu on 2017/12/19.
  */
-public class LJSONVariableElement implements freelifer.core.json.compiler.LIMITJSONVariable {
+public class LJSONVariableElement implements freelifer.core.json.compiler.json.LIMITJSONVariable {
 
     private Elements elements;
     private VariableElement variableElement;

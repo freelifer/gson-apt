@@ -20,6 +20,9 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 
 import freelifer.core.json.annotations.LIMITJSON;
+import freelifer.core.json.compiler.gson.GsonTypeElement;
+import freelifer.core.json.compiler.json.LJSONTypeElement;
+import freelifer.gson.annotations.Gson;
 
 /**
  * @author zhukun on 2017/12/19.
@@ -39,8 +42,11 @@ public class JSONProcessor extends AbstractProcessor {
         filer = processingEnv.getFiler();
         elements = processingEnv.getElementUtils();
         messager = processingEnv.getMessager();
-
+        String content = processingEnv.getOptions().get("GSON_MODULE_NAME");
         processorHelper = ProcessorHelper.create(filer, elements, messager);
+        processorHelper.setModuleName(content);
+
+        processorHelper.i("从app module 中获取到的参数: " + content);
     }
 
     @Override
@@ -48,7 +54,7 @@ public class JSONProcessor extends AbstractProcessor {
         Set<String> annotationTypes = new LinkedHashSet<String>();
         // add annotations type
         annotationTypes.add(LIMITJSON.class.getCanonicalName());
-
+        annotationTypes.add(Gson.class.getCanonicalName());
         return annotationTypes;
     }
 
@@ -72,7 +78,7 @@ public class JSONProcessor extends AbstractProcessor {
 
         try {
             processLimitJSON(roundEnv);
-
+            processGson(roundEnv);
 
             processorHelper.process();
 
@@ -101,7 +107,24 @@ public class JSONProcessor extends AbstractProcessor {
                     processorHelper.i("LJSON ........" + p.getSimpleName() + " " + p.asType().toString());
                 }
             }
+        }
+    }
 
+    private void processGson(RoundEnvironment roundEnv) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(Gson.class)) {
+            GsonTypeElement gsonElement = GsonTypeElement.create(elements, element);
+            processorHelper.setGsonTypeElements(gsonElement);
+            processorHelper.i("---------------------" + gsonElement.toString());
+//
+            TypeElement typeElement = (TypeElement) element;
+            Element a = typeElement.getEnclosingElement();
+            processorHelper.i("Gson ++" + a + " " + element.getKind().name());
+            List<? extends Element> param = typeElement.getEnclosedElements();
+            for (Element p : param) {
+                if (p instanceof VariableElement) {
+                    processorHelper.i("Gson ........" + p.getSimpleName() + " " + p.asType().toString());
+                }
+            }
         }
     }
 }

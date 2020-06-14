@@ -1,4 +1,4 @@
-package freelifer.core.json.compiler;
+package freelifer.core.json.compiler.json;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 
 import freelifer.core.json.annotations.LIMITJSON;
+import freelifer.core.json.compiler.Collections;
 
 /**
  * @author kzhu on 2017/12/19.

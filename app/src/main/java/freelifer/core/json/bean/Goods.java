@@ -1,12 +1,16 @@
 package freelifer.core.json.bean;
 
+import java.util.ArrayList;
+
 import freelifer.core.json.annotations.LIMITJSON;
 import freelifer.core.json.fliptables.FlipTable;
+import freelifer.gson.annotations.Gson;
 
 /**
  * @author kzhu on 2017/12/22.
  */
 @LIMITJSON()
+@Gson()
 public class Goods {
     public int id;
     public String name;
@@ -15,6 +19,7 @@ public class Goods {
     public float rate;
     public String date;
     public String date1;
+    public ReprotConfig flow;
 
     /**
      * <pre>
