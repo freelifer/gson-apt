@@ -16,8 +16,8 @@ public interface Adapter {
     /**
      * 转换
      *
-     * @param reader Reader字符串
-     * @return 返回对应的表达式
+     * @param input 输入
+     * @return 返回对应的参数
      */
-    String transform(String reader);
+    GsonCodeParameter transform(String input);
 }

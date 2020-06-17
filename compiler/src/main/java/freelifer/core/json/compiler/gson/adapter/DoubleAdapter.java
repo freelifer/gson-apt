@@ -10,7 +10,7 @@ public class DoubleAdapter implements Adapter {
     }
 
     @Override
-    public String transform(String reader) {
-        return reader + ".nextDouble()";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createBasicType(input + ".nextDouble()");
     }
 }

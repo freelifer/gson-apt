@@ -10,7 +10,7 @@ public class BooleanAdapter implements Adapter {
     }
 
     @Override
-    public String transform(String reader) {
-        return reader + ".nextBoolean()";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createBasicType(input + ".nextBoolean()");
     }
 }

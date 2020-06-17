@@ -1,6 +1,7 @@
 package freelifer.core.json.bean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import freelifer.core.json.annotations.LIMITJSON;
 import freelifer.core.json.fliptables.FlipTable;
@@ -19,7 +20,9 @@ public class Goods {
     public float rate;
     public String date;
     public String date1;
-    public ReprotConfig flow;
+    public List<String> rc;
+    public List<ReprotConfig> flow;
+    public String[] flows;
 
     /**
      * <pre>

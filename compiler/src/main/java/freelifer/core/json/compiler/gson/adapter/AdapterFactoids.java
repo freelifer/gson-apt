@@ -8,11 +8,25 @@ import java.util.List;
  * @author zhukun on 2020-06-14.
  */
 public class AdapterFactoids {
+    private static final Adapter EMPTY = new Adapter() {
+        @Override
+        public boolean isType(String type) {
+            return true;
+        }
+
+        @Override
+        public GsonCodeParameter transform(String input) {
+            return GsonCodeParameter.createEmpty();
+        }
+    };
+
     private List<AdapterFactory> factories = new ArrayList<>();
     private HashMap<String, Adapter> cachedApaters = new HashMap<>();
 
     public AdapterFactoids() {
         addAdapterFactory(new BasicTypeAdapterFactory());
+        addAdapterFactory(new ListAdapterFactory());
+        addAdapterFactory(new ArrayAdapterFactory());
     }
 
     public void addAdapterFactory(AdapterFactory adapterFactory) {
@@ -35,6 +49,7 @@ public class AdapterFactoids {
                 return adapter;
             }
         }
-        return null;
+
+        return EMPTY;
     }
 }

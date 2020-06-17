@@ -10,7 +10,8 @@ public class IntAdapter implements Adapter {
     }
 
     @Override
-    public String transform(String reader) {
-        return reader + ".nextInt()";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createBasicType(input + ".nextInt()");
     }
+
 }

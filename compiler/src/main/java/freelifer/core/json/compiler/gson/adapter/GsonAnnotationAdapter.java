@@ -19,8 +19,9 @@ public class GsonAnnotationAdapter implements Adapter {
         return type.equals(element.getQualifiedName());
     }
 
+
     @Override
-    public String transform(String reader) {
-        return "read" + element.getTypeName() + "(" + reader + ")";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createObjectType("read" + element.getTypeName() + "(" + input + ")");
     }
 }

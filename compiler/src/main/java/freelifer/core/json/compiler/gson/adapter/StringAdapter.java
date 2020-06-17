@@ -10,7 +10,7 @@ public class StringAdapter implements Adapter {
     }
 
     @Override
-    public String transform(String reader) {
-        return reader + ".nextString()";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createObjectType(input + ".nextString()");
     }
 }

@@ -9,8 +9,9 @@ public class FloatAdapter implements Adapter {
         return "float".equals(type);
     }
 
+
     @Override
-    public String transform(String reader) {
-        return "(float) " + reader + ".nextDouble()";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createBasicType("(float) " + input + ".nextDouble()");
     }
 }

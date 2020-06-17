@@ -10,7 +10,7 @@ public class LongAdapter implements Adapter {
     }
 
     @Override
-    public String transform(String reader) {
-        return reader + ".nextLong()";
+    public GsonCodeParameter transform(String input) {
+        return GsonCodeParameter.createBasicType(input + ".nextLong()");
     }
 }

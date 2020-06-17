@@ -1,6 +1,5 @@
 package freelifer.core.json.compiler.gson.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import freelifer.core.json.compiler.Collections;
