@@ -51,11 +51,18 @@ public class VerificationActivity extends BaseActivity {
     private void time() {
         StringBuilder stringBuilder = new StringBuilder();
 //        String srcData = readAssetsFile("goods.json");
-        String srcData = readAssetsFile("default_ad_config.json");
+        final String srcData = readAssetsFile("default_ad_config.json");
         srcDataText.setText(srcData);
         Gson gson = new GsonBuilder().create();
         int count = 100;
 
+        
+        runByAverage(2, 100, new Runnable() {
+            @Override
+            public void run() {
+                AdConfig$$CREATOR.create(srcData, false);
+            }
+        });
 
         long start = SystemClock.elapsedRealtime();
         for (int i = 0; i < count; i++) {
